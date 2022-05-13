@@ -1,4 +1,4 @@
 #!/bin/bash
-apt-get install openjdk-8-jdk-headless -qq > /dev/null -y
-echo JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 >> ~/.bashrc
-java -version
+wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add - echo "deb $([ \"$(uname -m)\" = \"x86_64\" ] && echo -n '[arch=amd64]') https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ buster main" | sudo tee /etc/apt/sources.list.d/adoptopenjdk.list
+apt update
+apt install adoptopenjdk-8-hotspot -y
